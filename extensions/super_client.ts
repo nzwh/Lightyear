@@ -1,6 +1,6 @@
 import { Client, Intents, Collection } from 'discord.js';
 
-class super_client extends Client {
+class SuperClient extends Client {
 
     public commands: Collection<unknown, any>;
     public aliases: Collection<unknown, any>;
@@ -17,4 +17,4 @@ class super_client extends Client {
 
 }
 
-export default super_client;
+export default SuperClient;
