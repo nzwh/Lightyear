@@ -16,15 +16,17 @@
                 let name = file.name.charAt(0).toUpperCase() + file.name.slice(1);
                 if (fs.readdirSync(`${dir}/${file.name}`).length === 0) {
                     console.log(`  ❱❱ No commands in the ${name} folder to load.`);
-                    
+                
+                // load files from the directory
                 } else {
-                    console.log(`  ❱❱ Loading files from the ${name} folder.`);
+                    console.log(`  ❱❱ Loading files from the ${name} folder...`);
                     get_files(`${dir}/${file.name}`, suffix, client);
                 }
                 
             // else, set the commands to the collection
             } else if (file.name.endsWith(suffix)) {
                 
+                // load the file into command
                 const command = require(`../${dir}/${file.name}`);
                 const command_name = file.name.substring(0, file.name.indexOf('.'));
 
@@ -36,8 +38,10 @@
                 }
 
                 // if the command has aliases, add them to the client.aliases collection
-                if (command.default.help.alias) {
-                for (const alias of command.default.help.alias) {
+                if (command.default.alias) {
+                for (const alias of command.default.alias) {
+
+                    // if the alias is already in the client.aliases collection, log a warning
                     if (client.aliases.has(alias)) {
                         console.log(`  ❱❱ The alias ${alias} is already loaded.`);
                     } else {
