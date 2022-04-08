@@ -20,6 +20,10 @@ client.once('ready', () => {
 
     client.commands = new Collection();
     client.aliases = new Collection();
+
+    let handler = require('./extensions/command_handler')
+    if (handler.default) handler = handler.default;
+    handler(client);
 })
 
 client.login(process.env.TOKEN); 
