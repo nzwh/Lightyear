@@ -4,11 +4,17 @@
 
     export default {
         run: async (client : SuperClient, message: Message, args: any[]) => {
-        
+
+            const msg = await message.reply({ allowedMentions: { repliedUser: false }, 
+                content: '\`⚡ Pinging...\`'});
+            msg.edit({ allowedMentions: { repliedUser: false }, 
+                content: `\`⚡ Pong!  •  🏴 Latency: ${Math.floor(msg.createdTimestamp - message.createdTimestamp)}ms\``});
+            
         },
 
-      help: {
-         name: "ping",
-         aliases: ['p']
-      }
+        name: 'ping',
+        alias: ['p', 'latency'],
+
+        usage: "Returns the latency between the bot and the server.",
+        status: 'AC'
    }
