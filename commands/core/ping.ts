@@ -16,5 +16,6 @@
         alias: ['p', 'latency'],
 
         usage: "Returns the latency between the bot and the server.",
-        status: 'AC'
+        status: 'AC',
+        categ: (__dirname.split(/[\\/]/).pop()!).toUpperCase()
    }
