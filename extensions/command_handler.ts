@@ -38,7 +38,7 @@
                 }
 
                 // if the command has aliases, add them to the client.aliases collection
-                if (command.default.alias) {
+                if (!command.default.alias) return;
                 for (const alias of command.default.alias) {
 
                     // if the alias is already in the client.aliases collection, log a warning
@@ -48,8 +48,6 @@
                         client.aliases.set(alias, command_name);
                     }
                 }
-                }
-
             }
         }
     };
